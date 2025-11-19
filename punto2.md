@@ -215,7 +215,7 @@ Acá lo que pasa es que sin esas utilidades sería difícil implementar las regl
 
 ---
 
-Utilicé como apoyo las notas y ejemplos que tenés subidos en el repositorio de trabajo: `/mnt/data/09.pdf`.
+
 
 
 **Fin del documento — punto2.md**
