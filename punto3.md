@@ -1,6 +1,6 @@
-# Punto 3 — Implementación en ANTLR (target: Python)
+# Punto 3 — Implementación en ANTLR 
 
-En este caso lo que se hizo fue implementar la gramática del Punto 2 en ANTLR y proveer ejemplos de cómo generar el parser y un *visitor* en Python que haga las comprobaciones semánticas principales (compatibilidad de dimensiones) y genere código intermedio (pseudocódigo C).  
+En este caso lo que se hizo fue implementar la gramatica del Punto 2 en ANTLR y proveer ejemplos de cómo generar el parser y un *visitor* en Python que haga las comprobaciones semánticas principales (compatibilidad de dimensiones) y genere código intermedio   
 
 Acá lo que pasa es que te dejo todo en lenguaje simple, con ejemplos y un script mínimo en Python. De vez en cuando se me puede escapar algun error de escritura, pero la idea principal está clara.
 
@@ -65,15 +65,15 @@ COMMENT     : '//' ~[\r\n]* -> skip ;
 // '<' '>' ',' ':' '=' ';' '[' ']' '(' ')' '*'
 ```
 
-En este caso lo que se hizo fue definir reglas para declaraciones, expresiones y literales de matrices. Acá lo que pasa es que las palabras reservadas (`matrix`, `int`, `float`, `double`) están definidas como tokens específicos para evitar confusiones con identificadores.
+En este caso lo que se hizo fue definir reglas para declaraciones, expresiones y literales de matrices. Acá lo que pasa es que las palabras reservadas (`matrix`, `int`, `float`, `double`) están definidas como tokens específicos para evitar confusiones con identificadores. Que es algo que me ha pasado antes
 
 ---
 
 ## 2) ¿Cómo generar el parser para Python?
 
-Entonces podemos ver los pasos, asumiento que tenés `antlr4` en el path:
+Entonces podemos ver los pasos, siempre y cuando tengamos el antl `antlr4` en el path:
 
-1. Instalar runtime de Python (si no lo tenés):
+1. Instalamos el runtime de pyhotn
 
 ```bash
 pip install antlr4-python3-runtime
@@ -301,10 +301,4 @@ En este caso lo que se hizo fue:
 Acá lo que pasa es que con esto tenes una base para extender y transformar a una herramienta real; la idea era que sea clara y facil de seguir, con lenguaje simple y ejemplos.
 
 ---
-
-### Referencias
-- Notas usadas en la modelacion: `/mnt/data/09.pdf`  
-
-
-**Fin de punto3.md**
 
