@@ -1,8 +1,8 @@
 # Punto 3 — Implementación en ANTLR 
 
-En este caso lo que se hizo fue implementar la gramatica del Punto 2 en ANTLR y proveer ejemplos de cómo generar el parser y un *visitor* en Python que haga las comprobaciones semánticas principales (compatibilidad de dimensiones) y genere código intermedio   
+En este caso lo que se hizo fue implementar la gramatica del Punto 2 en ANTLR y proveer ejemplos de cómo generar el parser y un *visitor* en Python que haga las comprobaciones semánticas proincipales (compatibilidad de dimensiones) y genere código intermedio   
 
-Acá lo que pasa es que te dejo todo en lenguaje simple, con ejemplos y un script mínimo en Python. De vez en cuando se me puede escapar algun error de escritura, pero la idea principal está clara.
+
 
 ---
 
@@ -69,7 +69,7 @@ En este caso lo que se hizo fue definir reglas para declaraciones, expresiones y
 
 ---
 
-## 2) ¿Cómo generar el parser para Python?
+## 2) Còmo generar el parser para Python?
 
 Entonces podemos ver los pasos, siempre y cuando tengamos el antl `antlr4` en el path:
 
@@ -95,9 +95,8 @@ Acá lo que pasa es que te dejo un ejemplo simple de `MatrixVisitor` que impleme
 
 - Tabla de símbolos (`env`) con filas/cols/tipo y si las dims son conocidas.
 - Comprobación en `A * B` de que `A.cols == B.rows` si ambas son constantes; si no lo son, se genera un chequeo runtime en el código.
-- Generación de pseudocódigo C con triple loop o con chequeo en runtime.
 
-Archivo sugerido: `matrix_checker.py`
+
 
 ```python
 # matrix_checker.py
@@ -236,7 +235,6 @@ class CheckerVisitor(MatrixVisitor):
 
 ```
 
-En este caso lo que se hizo fue dar una implementación bastante simple, no perfecta, pero suficiente para demostrar cómo se aplican las reglas semánticas. Acá lo que pasa es que el visitor retorna un diccionario con `rows`, `cols`, `code`, `errors`, etc.
 
 ---
 
