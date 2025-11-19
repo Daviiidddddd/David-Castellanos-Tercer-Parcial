@@ -253,22 +253,5 @@ print("Grammar generated: grammar/attribute_grammar.json")
 
 ---
 
-## .gitignore
-```text
-__pycache__/
-*.pyc
-grammar/attribute_grammar.json
-```
-
----
-
-
-
-### Referencias / PDFs de trabajo
-- `/mnt/data/09.pdf`
-- `/mnt/data/08 (1).pdf`
-
----
-
-**Fin del paquete de archivos.**
+**Fin del punto 1.**
 
