@@ -1,10 +1,9 @@
-# Punto 2 — Gramática de atributos para producto punto / multiplicación de matrices
+# Punto 2 — Gramática de atributos para prodcuto punto / multiplicación de matrices
 
-En este archivo está explicado **todo** lo que se modeló para resolver el producto punto (multiplicación matricial) entre dos matrices de diferentes dimensiones. En este caso lo que se hizo fue diseñar una gramática de un mini-lenguaje que permite declarar matrices, verificar compatibilidad de dimensiones y generar código intermedio (pseudocódigo) para realizar la multiplicación.
-
+En este archivo se explica lo que se modeló para resolver el producto punto (multiplicación matricial) entre dos matrices de diferentes dimensiones. En este caso lo que se hizo fue diseñar una gramática que nos permite declarar matrices, verificar compatibilidad de dimensiones y pues hacer codigo para la multiplicacion basicamente
 ---
 
-## 1. Objetivo y enfoque
+## 1. Lo que hicimos
 En este caso lo que se hizo fue concentrarnos en tres objetivos principales:
 
 - Verificar semánticamente que dos matrices sean compatibles para multiplicación (es decir, que el número de columnas de la primera coincida con el número de filas de la segunda).  
@@ -44,7 +43,7 @@ En este caso lo que se hizo fue permitir dimensiones ya sea como literales numé
 
 ---
 
-## 3. Atributos principales (qué guardan y cómo se usan)
+## 3. Atributos principales (uqé guardan y cómo se usan)
 
 En la gramática se definieron atributos heredados y sintetizados. Acá lo que pasa es que estos son los más importantes:
 
@@ -62,13 +61,6 @@ Entonces podemos ver que `env` se pasa desde el programa hacia las declaraciones
 
 ## 4. Reglas semánticas clave (explicadas con palabras)
 
-A continuación se detallan, con el enfoque "En este caso lo que se hizo fue..." y "Acá lo que pasa es que...", las reglas más relevantes.
-
-### Declaración de matriz
-**Producción:** `Decl → id : MatrixType ;`
-
-- En este caso lo que se hizo fue insertar en la tabla de símbolos (`env`) una entrada para `id` con sus atributos: `rows`, `cols`, `elemType` y `dimsKnown`.  
-- Acá lo que pasa es que si `Dim` es un `NUMBER` se guarda el valor numérico; si es un `id` se guarda el nombre simbólico y `dimsKnown` se marca como `false`.
 
 ### Referencia a identificador (PrimaryExpr → id)
 
@@ -79,12 +71,12 @@ A continuación se detallan, con el enfoque "En este caso lo que se hizo fue..."
 ### Multiplicación matricial (MatMulExpr → E1 '*' E2)
 
 - En este caso lo que se hizo fue aplicar la verificación de compatibilidad: se comparan `E1.cols` con `E2.rows`.  
-- Acá lo que pasa es que si ambos valores son constantes y no coinciden, se añade un error de incompatibilidad. Si alguno es simbólico o variable, se marca `dimsKnown = false` y se genera un chequeo en tiempo de ejecución.  
+- Acá lo que pasa es que si ambos vlores son constantes y no coinciden, se añade un error de incompatibilidad. Si alguno es simbólico o variable, se marca `dimsKnown = false` y se genera un chequeo en tiempo de ejecución.  
 - Entonces podemos ver que el resultado sintetiza `rows = E1.rows` y `cols = E2.cols` (estas son las dimensiones de la matriz resultante), y `elemType = numeric_promote(E1.elemType, E2.elemType)`.
 
 ### Generación de código (regla de código sintetizado)
 
-- En este caso lo que se hizo fue dos alternativas: si `dimsKnown == true` se genera código con límites constantes (bucles `for` con literales); si `dimsKnown == false` se genera código que incluye una comprobación en tiempo de ejecución `if (E1.cols != E2.rows) runtime_error(...)` y luego bucles usando variables como límites.
+- En este caso lo que se hizo fue dos alternativas: si `dimsKnown == true` se genera código con límites constantes (bucles `for` con literales); si `dimsKnown == false` se genera código que incluye una comprobación en tiempo de ejecución `if (E1.cols != E2.rows) runtime_error(...)` y luego bucles usando variables como límitess.
 
 - Acá lo que pasa es que el pseudocódigo que sintetizamos es el clásico triple-loop:
 
@@ -105,7 +97,7 @@ for (int i = 0; i < rows; ++i) {
 
 ---
 
-## 5. Reglas semánticas formales (ejemplos compactos)
+## 5. EJemplos de la relga
 
 A modo de guía, acá lo que se hizo fue resumir las reglas en forma casi formal:
 
@@ -144,7 +136,7 @@ MatMulExpr.elemType = numeric_promote(E1.elemType, E2.elemType)
 MatMulExpr.errors = concat(E1.errors, E2.errors, posible_incompatibilidad)
 ```
 
-En este caso lo que se hizo fue priorizar la detección temprana de errores semánticos y mantener la información necesaria para generar código correcto.
+Y pues aca lo que se hizo fue priorizar la detección temprana de errores semánticos y mantener la información necesaria para generar código correcto.
 
 ---
 
@@ -223,24 +215,6 @@ Acá lo que pasa es que sin esas utilidades sería difícil implementar las regl
 
 ---
 
-## 9. Extensiones y recomendaciones (qué más se puede hacer)
-
-- Optimización: en este caso lo que se hizo fue contemplar la posibilidad de detectar `dimsKnown` y matrices grandes para generar llamadas a BLAS en vez de bucles, lo que mejora rendimiento.  
-- Soporte mixto de tipos: Acá lo que pasa es que si multiplicamos `int` por `float` debemos promover a `float` y añadir casts si es necesario.  
-- Vectores y broadcasting: Entonces podemos ver que es factible agregar reglas para vectores (1-D) y algunas formas de broadcasting para compatibilizar dimensiones.  
-- Mejores mensajes de error: incluir posición/línea en `mkError` para ayudar al usuario.
-
----
-
-## 10. (Opcional) Implementación sugerida
-
-En este caso lo que se hizo fue describir una posible implementación práctica: un validador que reciba un AST simple donde `Assign` y `MatMulExpr` ya estén parseados, y aplique las reglas anteriores para devolver `{ errors, code, inferredType }`.
-
-Acá lo que pasa es que puedo generar ese script si lo necesitás; basta con decirme y lo creo como archivo Python que use la tabla `env` y produzca el código pseudoc en C que mostramos.
-
----
-
-### Referencia a materiales usados
 Utilicé como apoyo las notas y ejemplos que tenés subidos en el repositorio de trabajo: `/mnt/data/09.pdf`.
 
 
