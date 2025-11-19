@@ -1,49 +1,32 @@
-# Repositorio: sql-attribute-grammar
+# Repositorio: David Castellanos
+Punto 1
 
-Este documento contiene todos los archivos listos para subir a un repositorio GitHub. Cada sección está etiquetada con el **nombre del archivo** y su contenido (puedes copiar/pegar directamente a tu repo).
 
-> **Nota:** Incluí enlaces locales a los PDFs que subiste para referencia y pruebas: `/mnt/data/09.pdf` y `/mnt/data/08 (1).pdf`.
 
 ---
 
-## README.md
+## Punto De SQL (leer introduccion)
 ```markdown
 # sql-attribute-grammar
 
 Proyecto de ejemplo: Gramática de atributos para un mini-lenguaje SQL (CRUD) y utilidades para generar una representación programable de la gramática a partir de un *schema*.
 
 ## Contenido
-- `src/generate_attribute_grammar.py` — función que genera una representación (JSON) de la gramática de atributos a partir de un schema.
-- `grammar/attribute_grammar.json` — ejemplo de salida (para un schema de ejemplo).
+- `src/generate_attribute_grammar.py` — funciónn que genera una representación (JSON) de la gramática de atributos a partir de un schema.
+- `grammar/attribute_grammar.json` — ejemplo de salida 
 - `examples/schema_example.json` — schema de ejemplo usado para generar la gramática.
 - `examples/usage.py` — script de ejemplo que genera y guarda la gramática.
-- `LICENSE` — MIT.
-- `README.md` — este archivo.
 
-## PDFs de referencia (subidos por el usuario)
-- `/mnt/data/09.pdf`
-- `/mnt/data/08 (1).pdf`
 
-> Estos PDFs contienen las notas originales que usé para modelar la gramática y reglas semánticas.
 
-## Cómo usar
-1. Clona o copia los archivos a tu repositorio.
-2. Instala dependencias (solo `python` 3.8+ necesario).
-3. Ejecuta el ejemplo:
 
 ```bash
 python3 examples/usage.py
 ```
 
-Se generará `grammar/attribute_grammar.json` con la representación programable de la gramática basada en el `examples/schema_example.json`.
+Se hace el  `grammar/attribute_grammar.json` con la representación programable de la gramática basada en el `examples/schema_example.json`.
 
-## Extensiones sugeridas
-- Implementar un validador semántico que reciba SQL (o un AST) y aplique las reglas.
-- Generar salidas en formatos compatibles con generadores de analizadores (YACC/ANTRL) o con librerías de validación.
 
-## Autor
-Generado por ChatGPT (GPT-5 Thinking mini).
-```
 ```
 
 ---
@@ -159,7 +142,7 @@ if __name__ == '__main__':
 
 ---
 
-## grammar/attribute_grammar.json
+## gramatica
 ```json
 {
   "schema": {
@@ -246,7 +229,7 @@ if __name__ == '__main__':
 
 ---
 
-## examples/usage.py
+## el ejemplo
 ```python
 """Ejemplo de uso: genera el JSON de la gramática usando el schema de examples/schema_example.json"""
 import json
@@ -279,29 +262,7 @@ grammar/attribute_grammar.json
 
 ---
 
-## LICENSE
-```text
-MIT License
 
-Copyright (c) 2025
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
 
 ### Referencias / PDFs de trabajo
 - `/mnt/data/09.pdf`
